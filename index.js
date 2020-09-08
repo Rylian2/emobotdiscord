@@ -8,7 +8,6 @@ const { join } = require("path");
 const client = new Client({ disableMentions: "everyone" });
 
 client.commands = new Collection();
-client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
