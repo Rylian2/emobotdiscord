@@ -4,10 +4,12 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
+const {PREFIX } = require("./config.json");
 
 const client = new Client({ disableMentions: "everyone" });
 
 client.commands = new Collection();
+client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -76,7 +78,5 @@ client.on("message", async (message) => {
   } catch (error) {
     console.error(error);
     message.reply("There was an error executing that command.").catch(console.error);
-
-    client.login(process.env.TOKEN);
   }
 });
